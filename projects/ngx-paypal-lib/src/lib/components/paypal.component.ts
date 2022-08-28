@@ -83,7 +83,7 @@ export class NgxPaypalComponent implements OnChanges, OnDestroy, AfterViewInit {
     private paypalScriptService: PayPalScriptService,
     private cdr: ChangeDetectorRef,
     private ngZone: NgZone
-  ) {}
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!this.payPalButtonContainerId) {
@@ -297,9 +297,9 @@ export class NgxPaypalComponent implements OnChanges, OnDestroy, AfterViewInit {
           });
         },
         onClick: (data: any, actions: IOnClickCallbackActions) => {
-          this.ngZone.run(() => {
+          return this.ngZone.run(() => {
             if (config.onClick) {
-              config.onClick(data, actions);
+              return config.onClick(data, actions);
             }
           });
         },
